@@ -11,6 +11,7 @@
 4. [Clearn css](https://www.npmjs.org/package/clean-css)
 5. [Html entities](https://www.npmjs.org/package/html-entities)
 6. [Foudation](http://foundation.zurb.com/)
+7. [regex 30 minutes](http://deerchao.net/tutorials/regex/regex.htm)
 
 ### 许可证 License
 [MIT](http://opensource.org/licenses/MIT)

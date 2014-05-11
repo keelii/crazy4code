@@ -1,5 +1,6 @@
 {
     "name": "crazy4code",
+    "init": "supervisor",
     "version": "0.0.1",
     "homepage": "http://crazy4code.com",
     "scripts": {

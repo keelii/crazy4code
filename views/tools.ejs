@@ -4,83 +4,75 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tools - Crazy for code </title>
-    <link rel="stylesheet" href="/stylesheets/foundation.css" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
 
-    <script src="/javascripts/vendor/modernizr.js"></script>
+    <% include head%>
 </head>
 <body>
     <% include nav%>
 
     <div class="row">
-        <h1>Code formater</h1>
+        <h1>代码美化/压缩</h1>
     </div>
     <div class="row">
-        <fieldset>
-            <legend>Awsome code formater</legend>
-            <form action="/tools" method="post" id="form">
+        <form action="/tools" method="post" id="form">
 
-                <label for="format-type">Format type</label>
-                <select id="format-type" name="format_type">
-                    <optgroup label="Compress">
-                        <option value="compress_js">Compress JavaScript</option>
-                        <option value="compress_css">Compress CSS</option>
-                    </optgroup>
-                    <optgroup label="Beautify">
-                        <option value="beautyfiy_js">Beautify JavaScript</option>
-                        <option value="beautyfiy_html">Beautify HTML</option>
-                        <option value="beautyfiy_css">Beautify CSS</option>
-                    </optgroup>
-                    <optgroup label="Convert">
-                        <option value="encode_html">encode html entitis«»‹›×•©</option>
-                        <option value="decode_html">decode html entitis</option>
-                    </optgroup>
-
-                </select>
-
-                <div class="row">
-                    <div class="large-6 columns">
-                        <label for="remove_console">
-                            <input type="checkbox" name="remove_console" id="remove_console" /> remove console
-                        </label>
-                        <label for="indent_with_tabs">
-                            <input type="checkbox" name="indent_with_tabs" id="indent_with_tabs" /> Indent With Tabs
-                        </label>
-                    </div>
-                    <div class="large-6 columns">
-                        <label>Indent Size</label>
-                        <input type="radio" name="indent_size" value="1" id="indent_size_1"><label for="indent_size_1">1</label>
-                        <input type="radio" name="indent_size" value="2" id="indent_size_2"><label for="indent_size_2">2</label>
-                        <input type="radio" name="indent_size" value="3" id="indent_size_3"><label for="indent_size_3">3</label>
-                        <input type="radio" name="indent_size" value="4" id="indent_size_4" checked><label for="indent_size_4">4</label>
-                    </div>
+            <label for="format-type">Format type</label>
+            <select id="format-type" name="format_type">
+                <optgroup label="Compress">
+                    <option value="compress_js">Compress JavaScript</option>
+                    <option value="compress_css">Compress CSS</option>
+                </optgroup>
+                <optgroup label="Beautify">
+                    <option value="beautyfiy_js">Beautify JavaScript</option>
+                    <option value="beautyfiy_html">Beautify HTML</option>
+                    <option value="beautyfiy_css">Beautify CSS</option>
+                </optgroup>
+                <optgroup label="Convert">
+                    <option value="encode_html">encode html entitis«»‹›×•©</option>
+                    <option value="decode_html">decode html entitis</option>
+                </optgroup>
+            </select>
+            <% if( typeof type !== "undefined" ) { %>
+            <script>cfg.formatType = '<%= type %>';</script>
+            <% } %>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label for="remove_console">
+                        <input type="checkbox" name="remove_console" id="remove_console" /> remove console
+                    </label>
+                    <label for="indent_with_tabs">
+                        <input type="checkbox" name="indent_with_tabs" id="indent_with_tabs" /> Indent With Tabs
+                    </label>
                 </div>
-
-                <label for="code-in">Code in</label>
-                <textarea class="code" id="code-in" name="source" placeholder="past your code here..."><% if (typeof source !== "undefined") { %><%= source %><% } %></textarea>
-
-                <label for="code-out">Code out</label>
-                <textarea class="code" id="code-out" name="result" placeholder="result code here..."><% if (typeof result !== "undefined") { %><%= result %><% } %></textarea>
-
-                <% if ( typeof error !== "undefined" ) { %>
-                <div data-alert="" class="alert-box alert">
-                    Error: <%= error.message %>
-                    <a href="#" class="close">×</a>
+                <div class="large-6 columns">
+                    <label>Indent Size</label>
+                    <input type="radio" name="indent_size" value="1" id="indent_size_1"><label for="indent_size_1">1</label>
+                    <input type="radio" name="indent_size" value="2" id="indent_size_2"><label for="indent_size_2">2</label>
+                    <input type="radio" name="indent_size" value="3" id="indent_size_3"><label for="indent_size_3">3</label>
+                    <input type="radio" name="indent_size" value="4" id="indent_size_4" checked><label for="indent_size_4">4</label>
                 </div>
-                <% } %>
-                <ul class="button-group">
-                    <input type="submit" class="button" value="Format" />
-                    <input type="reset" class="button secondary" value="reset" />
-                </ul>
+            </div>
 
-            </form>
-        </fieldset>
+            <label for="code-in">Code in <a href="#none" id="exchange_code">exchange</a> </label>
+            <textarea class="code" id="code-in" name="source" placeholder="past your code here..." spellcheck="false"><% if (typeof source !== "undefined") { %><%= source %><% } %></textarea>
+
+            <label for="code-out">Code out</label>
+            <textarea class="code" id="code-out" name="result" placeholder="result code here..." spellcheck="false"><% if (typeof result !== "undefined") { %><%= result %><% } %></textarea>
+
+            <% if ( typeof error !== "undefined" ) { %>
+            <div data-alert="" class="alert-box alert">
+                Error: <%= error.message %>
+                <a href="#" class="close">×</a>
+            </div>
+            <% } %>
+            <ul class="button-group">
+                <input type="submit" class="button" value="Format" />
+                <input type="reset" class="button secondary" value="reset" />
+            </ul>
+        </form>
     </div>
 
-    <script src="/javascripts/vendor/jquery.js"></script>
-    <script src="/javascripts/foundation.min.js"></script>
-    <script>
-        $(document).foundation();
-    </script>
+    <% include foot%>
+    <% include ga%>
 </body>
 </html>

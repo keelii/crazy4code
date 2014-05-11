@@ -74,6 +74,11 @@ function init(app) {
             title: 'Regexp - Crazy4code'
         });
     });
+    app.get('/thanks', function(req, res) {
+        res.render('thanks', {
+            title: 'thanks - Crazy4code'
+        });
+    });
 
     app.get('/tools', function(req, res) {
         res.render('tools', {
@@ -82,6 +87,7 @@ function init(app) {
     });
     app.post('/tools', function(req, res) {
         var source = req.body.source;
+        var type = req.body['format_type'];
         var removeConsole = typeof req.body['remove_console'] !== 'undefined';
         var indentWithTabs = typeof req.body['indent_with_tabs'] !== 'undefined';
         var indentSize = req.body['indent_size'];
@@ -90,7 +96,7 @@ function init(app) {
 
         try {
             result = codeYouWill(source, {
-                type: req.body['format_type'],
+                type: type,
                 removeConsole: removeConsole,
                 indentWithTabs: indentWithTabs,
                 indentSize: indentSize
@@ -102,6 +108,7 @@ function init(app) {
 
         res.render('tools', {
             title: 'tools - Crazy4code',
+            type: type,
             source: source,
             result: result,
             error: error

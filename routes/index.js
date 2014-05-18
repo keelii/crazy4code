@@ -10,9 +10,10 @@ var html4Entities = new Html4Entities();
 
 function codeYouWill(source, opts) {
     var result;
+    var indentChar = opts.indentWithTabs ? '\t' : ' ';
     var beautifyConfigs = {
         "indent_size": opts.indentSize || 4,
-        "indent_char": " ",
+        "indent_char": indentChar,
         "indent_level": 0,
         "indent_with_tabs": opts.indentWithTabs || false,
         "preserve_newlines": true,
@@ -29,16 +30,23 @@ function codeYouWill(source, opts) {
     };
 
     if (opts.type === 'compress_js') {
+        // var toplevel_ast = UglifyJS.parse(source);
+        // var compressor = UglifyJS.Compressor({
+        //     "drop_console": opts.removeConsole
+        // });
+        // var compressed_ast = toplevel_ast.transform(compressor);
+
         var ast = UglifyJS.parse(source);
         ast.figure_out_scope();
         var compressor = UglifyJS.Compressor({
-            // "ascii-only": true,
             "drop_console": opts.removeConsole
         });
         ast = ast.transform(compressor, function(r) {
             console.log(r);
         });
-        result = ast.print_to_string();
+        result = ast.print_to_string({
+            ascii_only: opts.asciiOnly
+        });
     }
     if (opts.type === 'beautyfiy_js') {
         result = beautifyJS(source, beautifyConfigs);
@@ -65,29 +73,46 @@ function codeYouWill(source, opts) {
 function init(app) {
     app.get('/', function(req, res) {
         res.render('index', {
-            title: 'Crazy4code'
+            title: 'Crazy4code',
+            nav: 'home'
         });
     });
 
+    app.get('/image', function(req, res) {     
+        res.render('image', {
+            title: 'Image crazy4code'
+        });
+    });
+
+    app.get('/character', function(req, res) {
+        res.render('character', {
+            title: 'character - Crazy4code',
+            nav: 'character'
+        });
+    });
     app.get('/regexp', function(req, res) {
         res.render('regexp', {
-            title: 'Regexp - Crazy4code'
+            title: 'Regexp - Crazy4code',
+            nav: 'regexp'
         });
     });
     app.get('/thanks', function(req, res) {
         res.render('thanks', {
-            title: 'thanks - Crazy4code'
+            title: 'Thanks - Crazy4code',
+            nav: 'thanks'
         });
     });
 
-    app.get('/tools', function(req, res) {
-        res.render('tools', {
-            title: 'tools - Crazy4code'
+    app.get('/formatter', function(req, res) {
+        res.render('formatter', {
+            title: 'Formatter - Crazy4code',
+            nav: 'formatter'
         });
     });
-    app.post('/tools', function(req, res) {
+    app.post('/formatter', function(req, res) {
         var source = req.body.source;
         var type = req.body['format_type'];
+        var asciiOnly = typeof req.body['ascii_only'] !== 'undefined';
         var removeConsole = typeof req.body['remove_console'] !== 'undefined';
         var indentWithTabs = typeof req.body['indent_with_tabs'] !== 'undefined';
         var indentSize = req.body['indent_size'];
@@ -99,15 +124,17 @@ function init(app) {
                 type: type,
                 removeConsole: removeConsole,
                 indentWithTabs: indentWithTabs,
-                indentSize: indentSize
+                indentSize: indentSize,
+                asciiOnly: asciiOnly
             });
         } catch (e) {
             error = e;
         }
 
 
-        res.render('tools', {
-            title: 'tools - Crazy4code',
+        res.render('formatter', {
+            title: 'formatter - Crazy4code',
+            nav: 'formatter',
             type: type,
             source: source,
             result: result,

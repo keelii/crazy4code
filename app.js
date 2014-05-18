@@ -10,9 +10,10 @@ var path = require('path');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 2048);
+app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+app.use(express.bodyParser({uploadDir:'./uploads'}));
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -32,3 +33,4 @@ routes(app);
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
+

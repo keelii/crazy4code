@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character - Crazy for code </title>
+    <style>
+    .charactor-list {
+        list-style: none;
+        margin-left: 0;
+    }
+    .charactor-list li {
+        display:inline-block;
+        width:3em;
+        height:3em;
+        line-height: 3em;
+        margin:0.5px;
+        border:1px solid #eee;
+        text-align: center;
+    }
+    .charactor-list li.actived {
+        border-color:#000;
+    }
+    </style>
+    <% include head%>
+</head>
+<body>
+    <% include nav%>
+
+    <div class="row">
+        <h1>常用字符</h1>
+
+        <label for="choose-font">font name:</label>
+        <select id="choose-font">
+            <option>choose font</option>
+            <option value="simsun">simsun</option>
+            <option value="microsoft yahei">microsoft yahei</option>
+            <option value="arial">arial</option>
+            <option value="verdana">verdana</option>
+        </select>
+
+        <label>font size:</label>
+        <input type="button" value="-" id="fs-reduce" class="button tiny" />
+        <input type="button" value="+" id="fs-add" class="button tiny" />
+
+        <label for="font-result">font result:</label>
+        <input type="text" value="result" id="font-result"/>
+
+        <ul id="charactor-list" class="charactor-list">
+            <li>«</li>
+            <li>»</li>
+            <li>‹</li>
+            <li>›</li>
+            <li>×</li>
+            <li>•</li>
+            <li>©</li>
+            <li>♡</li>
+            <li>♥</li>
+            <li>▲</li>
+            <li>▼</li>
+            <li>◀</li>
+            <li>▶</li>
+            <li>▽</li>
+            <li>△</li>
+            <li>★</li>
+            <li>♀</li>
+            <li>♂</li>
+            <li>⌘</li>
+            <li>⎋</li>
+            <li>⌥</li>
+            <li>●</li>
+            <li>○</li>
+            <li>◻︎</li>
+            <li>◼︎</li>
+            <li>◆</li>
+            <li>◇</li>
+            <li>★</li>
+            <li>☆</li>
+        </ul>
+    </div>
+
+    <% include foot%>
+    <% include ga%>
+</body>
+</html>

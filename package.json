@@ -12,6 +12,7 @@
         "uglify-js": "2.4.13",
         "js-beautify": "1.5.1",
         "clean-css": "2.1.8",
-        "html-entities": "1.0.10"
+        "html-entities": "1.0.10",
+        "node-qiniu": "*"
     }
 }

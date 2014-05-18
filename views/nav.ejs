@@ -19,9 +19,21 @@
             </ul>
             <!-- Left Nav Section -->
             <ul class="left">
-                <li><a href="/tools">Code formater</a></li>
-                <li><a href="/regexp">regexp</a></li>
-                <li><a href="/thanks">thanks</a></li>
+                <li><a id="nav-formatter" href="/formatter">Formatter</a></li>
+                <li><a id="nav-regexp" href="/regexp">Regexp</a></li>
+                <li><a id="nav-character" href="/character">Character</a></li>
+                <li><a id="nav-thanks" href="/thanks">Thanks</a></li>
             </ul>
+            <script>
+                (function(doc) {
+                    var nav;
+                    if ( cfg.nav ) {
+                        nav = doc.getElementById('nav-' + cfg.nav);
+                        if ( nav ) {
+                            nav.className += 'current';
+                        }
+                    };
+                })(document);
+            </script>
         </section>
     </nav>

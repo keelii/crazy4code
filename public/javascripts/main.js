@@ -52,12 +52,11 @@ $(function() {
 
     indentWithTabs.bind('change', function() {
         var isChecked = $(this).is(':checked');
+        $('input[name="indent_size"]').prop('checked', false);
         if ( isChecked ) {
-            $('#indent_size_4').attr('checked', false);
-            $('#indent_size_1').attr('checked', true);
+            $('#indent_size_1').prop('checked', true);
         } else {
-            $('#indent_size_1').attr('checked', false);
-            $('#indent_size_4').attr('checked', true);
+            $('#indent_size_4').prop('checked', true);
         }
         
     });

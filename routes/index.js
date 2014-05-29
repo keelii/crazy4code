@@ -30,11 +30,6 @@ function codeYouWill(source, opts) {
     };
 
     if (opts.type === 'compress_js') {
-        // var toplevel_ast = UglifyJS.parse(source);
-        // var compressor = UglifyJS.Compressor({
-        //     "drop_console": opts.removeConsole
-        // });
-        // var compressed_ast = toplevel_ast.transform(compressor);
 
         var ast = UglifyJS.parse(source);
         ast.figure_out_scope();
@@ -78,9 +73,10 @@ function init(app) {
         });
     });
 
-    app.get('/image', function(req, res) {     
+    app.get('/image', function(req, res) {
         res.render('image', {
-            title: 'Image crazy4code'
+            title: 'Image crazy4code',
+            nav: 'image'
         });
     });
 

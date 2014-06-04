@@ -13,7 +13,9 @@ var app = express();
 app.set('port', process.env.PORT || 2048);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.bodyParser({uploadDir:'./uploads'}));
+app.use(express.bodyParser({
+    uploadDir: './uploads'
+}));
 app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -27,10 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 routes(app);
-// app.get('/', routes.index);
-// app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
-

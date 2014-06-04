@@ -19,14 +19,14 @@
 
             <label for="format-type">Format type</label>
             <select id="format-type" name="format_type">
-                <optgroup label="Compress">
-                    <option value="compress_js">Compress JavaScript</option>
-                    <option value="compress_css">Compress CSS</option>
-                </optgroup>
                 <optgroup label="Beautify">
                     <option value="beautyfiy_js">Beautify JavaScript</option>
                     <option value="beautyfiy_html">Beautify HTML</option>
                     <option value="beautyfiy_css">Beautify CSS</option>
+                </optgroup>
+                <optgroup label="Compress">
+                    <option value="compress_js">Compress JavaScript</option>
+                    <option value="compress_css">Compress CSS</option>
                 </optgroup>
                 <optgroup label="Convert">
                     <option value="encode_html">Encode html entitis</option>
@@ -64,7 +64,7 @@
             <textarea class="code" id="code-in" name="source" placeholder="past your code here..." spellcheck="false"><% if (typeof source !== "undefined") { %><%= source %><% } %></textarea>
 
             <label for="code-out">Code out</label>
-            <textarea class="code" id="code-out" name="result" placeholder="result code here..." spellcheck="false"><% if (typeof result !== "undefined") { %><%= result %><% } %></textarea>
+            <textarea class="code" id="code-out" rows="30" name="result" placeholder="result code here..." spellcheck="false"><% if (typeof result !== "undefined") { %><%= result %><% } %></textarea>
 
             <% if ( typeof error !== "undefined" ) { %>
             <div data-alert="" class="alert-box alert">
@@ -74,7 +74,7 @@
             <% } %>
             <ul class="button-group">
                 <input type="submit" class="button" value="Format" />
-                <input type="reset" class="button secondary" value="reset" />
+                <input type="reset" class="button secondary" value="reset" id="reset" />
             </ul>
         </div>
     </form>

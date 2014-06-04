@@ -6,10 +6,16 @@ $(function() {
     var fsReduce = $('#fs-reduce');
     var fontResult = $('#font-result');
     var indentWithTabs = $('#indent_with_tabs');
+    var reset = $('#reset');
+    var codeIn = $('#code-in');
+    var codeOut = $('#code-out');
+
+    reset.click(function() {
+        codeIn.html('');
+        codeOut.html('');
+    });
 
     exchangeCode.click(function() {
-        var codeIn = $('#code-in');
-        var codeOut = $('#code-out');
         var temp;
 
         temp = codeIn.val();
@@ -25,7 +31,7 @@ $(function() {
         var fontName = charactorList.css('font-family');
         var fontSize = charactorList.css('font-size');
 
-        fontResult.val( 'font-size:' + fontSize + '; ' + 'font-family:' + fontName );
+        fontResult.val('font-size:' + fontSize + '; ' + 'font-family:' + fontName);
     }
 
     chooseFont.bind('change', function() {
@@ -53,12 +59,12 @@ $(function() {
     indentWithTabs.bind('change', function() {
         var isChecked = $(this).is(':checked');
         $('input[name="indent_size"]').prop('checked', false);
-        if ( isChecked ) {
+        if (isChecked) {
             $('#indent_size_1').prop('checked', true);
         } else {
             $('#indent_size_4').prop('checked', true);
         }
-        
+
     });
 });
 

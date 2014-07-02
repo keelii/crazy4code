@@ -1,5 +1,4 @@
 $(function() {
-    var exchangeCode = $('#exchange_code');
     var chooseFont = $('#choose-font');
     var charactorList = $('#charactor-list');
     var fsAdd = $('#fs-add');
@@ -13,14 +12,6 @@ $(function() {
     reset.click(function() {
         codeIn.html('');
         codeOut.html('');
-    });
-
-    exchangeCode.click(function() {
-        var temp;
-
-        temp = codeIn.val();
-        codeIn.val(codeOut.val());
-        codeOut.val(temp);
     });
 
     if (cfg.formatType) {

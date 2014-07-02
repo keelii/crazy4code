@@ -60,11 +60,8 @@
             </div>
         </div>
         <div class="row">
-            <label for="code-in">Code in <a href="#none" id="exchange_code">exchange</a> </label>
-            <textarea class="code" id="code-in" name="source" placeholder="past your code here..." spellcheck="false"><% if (typeof source !== "undefined") { %><%= source %><% } %></textarea>
-
-            <label for="code-out">Code out</label>
-            <textarea class="code" id="code-out" rows="30" name="result" placeholder="result code here..." spellcheck="false"><% if (typeof result !== "undefined") { %><%= result %><% } %></textarea>
+            <label for="code-in">Your Code </label>
+            <textarea class="code" id="code-in" rows="30" name="source" placeholder="past your code here..." spellcheck="false"><% if (typeof result !== "undefined") { %><%= result %><% } %></textarea>
 
             <% if ( typeof error !== "undefined" ) { %>
             <div data-alert="" class="alert-box alert">

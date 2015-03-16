@@ -92,6 +92,12 @@ function init(app) {
             nav: 'regexp'
         });
     });
+    app.get('/markdown', function(req, res) {
+        res.render('markdown', {
+            title: 'markdown - Crazy4code',
+            nav: 'markdown'
+        });
+    });	
     app.get('/thanks', function(req, res) {
         res.render('thanks', {
             title: 'Thanks - Crazy4code',

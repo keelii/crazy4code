@@ -2,7 +2,7 @@ var editor;
 
 $(document).ready(function() {
 
-  $.getJSON('bower.json', function(json) {
+  $.getJSON('markdown-plus/bower.json', function(json) {
     $('#version-string').html(json.version); // 从 bower.json 读取版本号
   });
 
